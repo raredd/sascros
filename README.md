@@ -9,5 +9,5 @@ sas macros
 > libcontents.sas
   * grabs all contents from all sas data sets in a library
   
-> replace
+> replace.sas
   * find and replace
