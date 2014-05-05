@@ -11,3 +11,6 @@ sas macros
   
 > replace.sas
   * find and replace
+  
+> bintest.sas
+  * exact binomial sample size
