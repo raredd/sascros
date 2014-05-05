@@ -62,7 +62,7 @@ test <- within(data,
                inorder <- sapply(1:dim(data)[1], function(x) {
                  tmp1 <- sort(data[x, vars], na.last = NA)
                  tmp2 <- data[x, vars]  
-                 tmp2 <- tmp2[ ,!is.na(tmp2), drop = FALSE]
+                 tmp2 <- tmp2[ , !is.na(tmp2), drop = FALSE]
                  return(as.numeric(identical(tmp1, tmp2)))
 				}))
 
