@@ -14,3 +14,6 @@ sas macros
   
 > bintest.sas
   * exact binomial sample size
+
+> lowcase.sas
+  * convert all variable names to lowercase
