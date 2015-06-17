@@ -56,14 +56,18 @@ run ;
 /*
 *** in R:
 
-vars <- c(...)
+dat <- data.frame(date1 = 2:1, date2 = c(3, NA), date3 = 1:2)
+dat[] <- lapply(dat, as.Date, origin = '1970-01-01')
 
-test <- within(data, 
-               inorder <- sapply(1:dim(data)[1], function(x) {
-                 tmp1 <- sort(data[x, vars], na.last = NA)
-                 tmp2 <- data[x, vars]  
-                 tmp2 <- tmp2[ , !is.na(tmp2), drop = FALSE]
-                 return(as.numeric(identical(tmp1, tmp2)))
-				}))
+vars <- c('date1', 'date2', 'date3')
+
+within(dat, {
+  inorder <- vapply(seq_len(nrow(dat)), function(x)
+    !is.unsorted(dat[x, vars], na.rm = TRUE), integer(1))
+})
+
+#        date1      date2      date3 inorder
+# 1 1970-01-03 1970-01-04 1970-01-02       0
+# 2 1970-01-02       <NA> 1970-01-03       1
 
 */
